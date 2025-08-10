@@ -1,0 +1,2 @@
+pnpm prettier -w .
+pnpm eslint . --max-warnings 0
