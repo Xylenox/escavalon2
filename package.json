@@ -11,6 +11,8 @@
     "typescript-eslint": "^8.39.0"
   },
   "scripts": {
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint": "eslint . --max-warnings=0",
+    "fmt": "prettier . -w"
   }
 }
