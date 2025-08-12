@@ -1,2 +1,1 @@
-pnpm prettier -w .
-pnpm eslint . --max-warnings 0
+pnpm lint-staged
