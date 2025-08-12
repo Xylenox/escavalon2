@@ -31,8 +31,5 @@
     "jiti": "^2.5.1",
     "prettier": "^3.6.2",
     "socket.io": "^4.8.1"
-  },
-  "lint-staged": {		"*.ts": ["pnpm eslint --max-warnings 0", "pnpm prettier -w"]
-
   }
 }

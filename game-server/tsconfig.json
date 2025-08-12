@@ -3,6 +3,8 @@
   "compilerOptions": {
     "module": "NodeNext",
     "outDir": "dist",
-    "lib": ["es2024"]
-  }
+    "lib": ["es2024"],
+    "sourceMap": true
+  },
+  "include": ["src"]
 }

@@ -6,7 +6,11 @@ const SOCKETIO_PORT = process.env.SOCKETIO_PORT || 5051;
 
 function setupSocketIO() {
   const httpServer = createServer();
-  const io = new Server(httpServer);
+  const io = new Server(httpServer, {
+    cors: {
+      origin: "http://localhost:5173",
+    },
+  });
 
   new GameServer(io);
 

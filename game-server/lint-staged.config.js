@@ -1,5 +1,5 @@
 export default {
-  "*": (files) => {
-    return [`eslint .`, `prettier ${files} -w`];
+  "*": (_files) => {
+    return [`pnpm eslint . --max-warnings=0`, `pnpm prettier . -w`];
   },
 };
