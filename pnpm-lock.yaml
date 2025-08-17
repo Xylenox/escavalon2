@@ -17,6 +17,9 @@ importers:
 
   escavalon:
     dependencies:
+      shared:
+        specifier: workspace:*
+        version: link:../shared
       socket.io-client:
         specifier: ^4.8.1
         version: 4.8.1

@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { io } from 'socket.io-client';
+	import { io, Socket } from 'socket.io-client';
+	import type { ServerToClientEvents, ClientToServerEvents } from '@shared/events';
 
 	let lobby: string = $state('');
 	let players: number | undefined = $state(undefined);
 	let joinedLobby = $state(false);
 
-	let socket = io('ws://localhost:5051', {
+	let socket: Socket<ServerToClientEvents, ClientToServerEvents> = io('ws://localhost:5051', {
 		autoConnect: false
 	});
 	socket.on('joined_lobby', (lobbyId) => {
@@ -17,10 +18,12 @@
 	});
 
 	function joinLobby() {
+		socket.connect();
 		socket.emit('join_lobby', lobby);
 	}
 
 	function createLobby() {
+		socket.connect();
 		socket.emit('create_lobby');
 	}
 </script>

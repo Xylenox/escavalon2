@@ -6,5 +6,10 @@
     "lib": ["es2024"],
     "sourceMap": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "references": [
+    {
+      "@shared": "../shared"
+    }
+  ]
 }
