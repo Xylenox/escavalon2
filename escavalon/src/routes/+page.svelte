@@ -1,22 +1,14 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { createLobby, status } from './play/game.svelte';
 	let lobby: string = $state('');
-	function joinLobby() {
-		goto(`/play/${lobby}`);
-	}
 </script>
 
 <div class="content">
 	<div>
 		<input bind:value={lobby} />
-		<button onclick={joinLobby}>Join Lobby</button>
+		<button>Join Lobby</button>
 	</div>
 	<div>or</div>
-	<button onclick={createLobby}>Create Lobby</button>
-	{#if status.loading}
-		<div>Loading...</div>
-	{/if}
+	<button>Create Lobby</button>
 </div>
 
 <style>

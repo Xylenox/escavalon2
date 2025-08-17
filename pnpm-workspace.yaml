@@ -1,2 +1,4 @@
 packages:
-  - "game-server"
+  - game-server
+  - escavalon
+  - shared

@@ -1,0 +1,1 @@
+export type LobbyOptions = { query: string }
