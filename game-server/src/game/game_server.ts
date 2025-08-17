@@ -12,6 +12,7 @@ function randomLobbyId(): string {
 }
 
 export class GameServer {
+  server: Server;
   lobbies: Map<string, Lobby>;
 
   getNewLobbyId(): string {
@@ -25,7 +26,7 @@ export class GameServer {
   createLobby(socket: Socket): string {
     const lobbyId = this.getNewLobbyId();
 
-    const lobby = new Lobby(lobbyId, socket, {
+    const lobby = new Lobby(this.server, lobbyId, socket, {
       onClose: () => {
         console.log(`cleaning up lobby ${lobbyId}`);
         this.lobbies.delete(lobbyId);
@@ -39,6 +40,7 @@ export class GameServer {
   }
 
   constructor(io: Server) {
+    this.server = io;
     this.lobbies = new Map();
 
     io.on("connect", (socket) => {
