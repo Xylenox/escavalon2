@@ -1,4 +1,4 @@
 <script lang="ts">
-	import { socket } from '../socket.svelte.ts';
-	console.log(socket.socket);
+	import { status } from '../game.svelte';
+	console.log(status.lobby);
 </script>

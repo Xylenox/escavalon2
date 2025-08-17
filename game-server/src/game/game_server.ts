@@ -42,21 +42,16 @@ export class GameServer {
     this.lobbies = new Map();
 
     io.on("connect", (socket) => {
-      let lobbyId: string;
-      if (socket.handshake.query["createLobby"] === "true") {
+      socket.on("create_lobby", () => {
         this.createLobby(socket);
-      } else {
-        const lobbyInput = socket.handshake.query["lobbyId"];
-        if (typeof lobbyInput === "string" && this.lobbies.has(lobbyInput)) {
-          lobbyId = lobbyInput;
-          const lobby = this.lobbies.get(lobbyId)!;
-          lobby.connect(socket);
+      });
+      socket.on("join_lobby", (lobbyId: string) => {
+        if (this.lobbies.has(lobbyId)) {
+          this.lobbies.get(lobbyId)!.connect(socket);
         } else {
           socket.emit("invalid_lobby");
-          socket.disconnect(true);
-          return;
         }
-      }
+      });
     });
   }
 }
